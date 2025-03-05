@@ -1,0 +1,16 @@
+---
+import Pricing from '../components/Pricing.astro';
+import ServicesGrid from '../components/ServicesGrid.astro';
+import MainLayout from '../layouts/MainLayout.astro';
+import Faq from '../components/Faq.astro';
+import Scroll from '../components/Scroll.astro';
+import IndexHero from '../components/IndexHero.astro';
+---
+
+<MainLayout>
+  <IndexHero client:load />
+  <Scroll />
+  <ServicesGrid />
+  <Pricing />
+  <Faq />
+</MainLayout>

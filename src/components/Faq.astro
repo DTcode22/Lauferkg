@@ -1,0 +1,264 @@
+---
+import Icon from 'astro-icon';
+import CallToAction from './CallToAction.astro';
+
+const faqs = [
+  {
+    question: 'Koliko vremena je potrebno da se dobije vozačka dozvola?',
+    answer:
+      'Proces obično traje 8-12 meseci. Naš BDE program uključuje 20 sati učioničke nastave, 10 sati praktične obuke u automobilu i 10 sati učenja kod kuće. Nakon završetka kursa, možete polagati vozački ispit za samo 8 meseci od dobijanja G1.',
+  },
+  {
+    question: 'Šta je uključeno u vaš kurs za početnike (BDE)?',
+    answer:
+      'Naš MTO odobreni BDE kurs uključuje 20 sati predavanja u učionici, 10 sati individualne obuke u automobilu, 10 sati fleksibilnog učenja kod kuće i sertifikat nakon završetka. Naučićete sve, od osnovne kontrole vozila do naprednih tehnika defanzivne vožnje.',
+  },
+  {
+    question: 'Da li obezbeđujete auto za vozački ispit?',
+    answer:
+      'Da! Obezbeđujemo dobro održavan, potpuno osiguran automobil za vaš vozački ispit. Naši automobili se redovno servisiraju i opremljeni su duplim komandama za bezbednost. Takođe nudimo časove zagrevanja pre ispita kako biste se osećali samouvereno na dan ispita.',
+  },
+  {
+    question: 'Koje opcije plaćanja nudite?',
+    answer:
+      'Nudimo fleksibilne planove plaćanja bez kamate. Možete platiti u celosti ili izabrati naš plan rata: 40% inicijalni depozit i dve mesečne rate od po 30%. Prihvatamo sve glavne kreditne kartice, debitne kartice, e-transfer i gotovinu.',
+  },
+  {
+    question: 'Mogu li da promenim termin časova vožnje?',
+    answer:
+      'Da, možete promeniti termin časova uz najavu od najmanje 24 sata bez dodatne naplate. Otkazivanja u poslednjem trenutku ili nedolazak mogu rezultirati naknadom. Razumemo da se rasporedi menjaju i trudimo se da budemo što fleksibilniji.',
+  },
+  {
+    question: 'Koja područja pokrivate?',
+    answer:
+      'Prvenstveno pokrivamo Skarbro, Nort Jork, Markam i Ričmond Hil. Naši instruktori su upoznati sa svim lokalnim rutama za polaganje i mogu vas pokupiti od kuće, škole ili posla u ovim oblastima.',
+  },
+];
+---
+
+<div class="faq-section">
+  <div class="container">
+    <!-- Naslovna sekcija -->
+    <div class="title-section">
+      <h2>Česta pitanja: Imate pitanja? <span>Imamo odgovore</span></h2>
+      <p>
+        Pronađite odgovore na najčešće postavljana pitanja o našoj auto školi i
+        kursevima.
+      </p>
+    </div>
+
+    <!-- FAQ lista -->
+    <div class="faq-grid">
+      {
+        faqs.map((faq, index) => (
+          <div class="faq-item">
+            <button class="faq-question" data-index={index}>
+              <span>{faq.question}</span>
+              <svg
+                class="chevron"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <div class="faq-answer" hidden>
+              <div class="answer-content">{faq.answer}</div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+  <CallToAction />
+</div>
+
+<style>
+  .faq-section {
+    /* padding: 5rem 0; */
+    padding-top: 6rem;
+  }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .title-section {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .title-section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3149;
+    margin-bottom: 1.5rem;
+  }
+
+  .title-section h2 span {
+    color: #eab308;
+  }
+
+  .title-section p {
+    color: #4b5563;
+    font-size: 1.125rem;
+    max-width: 42rem;
+    margin: 0 auto;
+  }
+
+  .faq-grid {
+    max-width: 56rem;
+    margin: 0 auto;
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .faq-item {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .faq-item:hover {
+    box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.15);
+  }
+
+  .faq-question {
+    width: 100%;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    text-align: left;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+
+  .faq-question span {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #2c3149;
+  }
+
+  .chevron {
+    color: #eab308;
+    transition: transform 0.2s ease;
+  }
+
+  .faq-question[aria-expanded='true'] .chevron {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    overflow: hidden;
+    transition: height 0.2s ease-in-out;
+  }
+
+  .answer-content {
+    padding: 0 1.5rem 1.25rem;
+    color: #4b5563;
+    border-top: 1px solid #f3f4f6;
+  }
+
+  .view-all {
+    text-align: center;
+    margin-top: 4rem;
+  }
+
+  .view-all-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: white;
+    border: 2px solid #2c3149;
+    border-radius: 9999px;
+    color: #2c3149;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .view-all-button:hover {
+    background: #f9fafb;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+
+  .arrow-circle {
+    width: 1.5rem;
+    height: 1.5rem;
+    background: #eab308;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+  }
+
+  .arrow-circle svg {
+    color: white;
+  }
+
+  .view-all-button:hover .arrow-circle {
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 768px) {
+    .title-section h2 {
+      font-size: 2rem;
+    }
+
+    .container {
+      padding: 0 1rem;
+    }
+  }
+</style>
+
+<script>
+  function initFAQ() {
+    const faqItems = document.querySelectorAll('.faq-question');
+
+    faqItems.forEach((item) => {
+      item.addEventListener('click', () => {
+        const answer = item.nextElementSibling as HTMLElement;
+        const isExpanded = item.getAttribute('aria-expanded') === 'true';
+
+        faqItems.forEach((otherItem) => {
+          if (otherItem !== item) {
+            otherItem.setAttribute('aria-expanded', 'false');
+            const otherAnswer = otherItem.nextElementSibling as HTMLElement;
+            if (otherAnswer) {
+              otherAnswer.style.height = '0';
+              otherAnswer.hidden = true;
+            }
+          }
+        });
+
+        // Toggle current item
+        item.setAttribute('aria-expanded', !isExpanded ? 'true' : 'false');
+        answer.hidden = isExpanded;
+
+        if (!isExpanded) {
+          answer.style.height = answer.scrollHeight + 'px';
+        } else {
+          answer.style.height = '0';
+        }
+      });
+    });
+  }
+
+  // Initialize FAQ functionality
+  document.addEventListener('DOMContentLoaded', initFAQ);
+</script>

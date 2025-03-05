@@ -1,0 +1,295 @@
+---
+// CallToAction.astro
+import { Image } from 'astro:assets';
+---
+
+<div class="cta-section">
+  <div class="container">
+    <!-- Banner Section -->
+    <div class="banner-wrapper">
+      <div class="banner-skew"></div>
+      <div class="banner">
+        <!-- Background Elements -->
+        <div class="banner-background">
+          <div class="overlay-multiply"></div>
+          <div class="overlay-gradient"></div>
+          <img src="/driving.avif" alt="Background" class="background-image" />
+        </div>
+
+        <!-- Content -->
+        <div class="banner-content">
+          <div class="content-wrapper">
+            <div class="content-grid">
+              <!-- Text Content -->
+              <div class="text-content">
+                <h2 class="title">
+                  Spremni da savladate <br class="title-break" />
+                  <span class="highlight-wrapper">
+                    <span class="highlight">put?</span>
+                    <span class="highlight-bg"></span>
+                  </span>
+                </h2>
+                <p class="description">
+                  Rezervišite časove online i položite vozački ispit sa Laufer.
+                  Započnite svoje putovanje ka tome da postanete samouvereni
+                  vozač danas.
+                </p>
+
+                <!-- Action Button -->
+                <a href="/contact" class="cta-button">
+                  <span class="button-text">Zakažite čas danas</span>
+                  <div class="button-icon">
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M9 18l6-6-6-6"></path>
+                    </svg>
+                  </div>
+                </a>
+              </div>
+
+              <!-- Stats Section -->
+              <div class="stats-container">
+                <div class="stats-grid">
+                  <div class="stat-item">
+                    <div class="stat-value">98%</div>
+                    <div class="stat-label">Prolaznost</div>
+                  </div>
+                  <div class="stat-item">
+                    <div class="stat-value">15+</div>
+                    <div class="stat-label">Godina iskustva</div>
+                  </div>
+                  <div class="stat-item">
+                    <div class="stat-value">1000+</div>
+                    <div class="stat-label">Obučenih učenika</div>
+                  </div>
+                  <div class="stat-item">
+                    <div class="stat-value">4.7</div>
+                    <div class="stat-label">Prosečna ocena</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Decorative gradient -->
+  <div class="bottom-gradient"></div>
+</div>
+
+<style>
+  .cta-section {
+    position: relative;
+    padding: 5rem 0;
+    overflow: hidden;
+    margin-top: 4rem;
+  }
+
+  .container {
+    position: relative;
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .banner-wrapper {
+    position: relative;
+  }
+
+  .banner-skew {
+    position: absolute;
+    inset: 0;
+    background-color: #2c3149;
+    border-radius: 2.5rem;
+    transform: skewY(133deg) scale(1.2);
+  }
+
+  .banner {
+    position: relative;
+    border-radius: 2.5rem;
+    overflow: hidden;
+    background: linear-gradient(to bottom right, #2c3149, #1a1f33);
+  }
+
+  .banner-background {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .overlay-multiply {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(44, 49, 73, 0.8);
+    mix-blend-mode: multiply;
+  }
+
+  .overlay-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, #2c3149, transparent, transparent);
+  }
+
+  .background-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+  }
+
+  .banner-content {
+    position: relative;
+    padding: 6rem 1.5rem;
+  }
+
+  .content-wrapper {
+    max-width: 80rem;
+    margin: 0 auto;
+  }
+
+  .content-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  @media (min-width: 768px) {
+    .content-grid {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  .text-content {
+    flex: 1;
+    text-align: left;
+    max-width: 42rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  @media (min-width: 640px) {
+    .title {
+      font-size: 3rem;
+    }
+  }
+
+  .title-break {
+    display: none;
+  }
+
+  @media (min-width: 640px) {
+    .title-break {
+      display: block;
+    }
+  }
+
+  .highlight-wrapper {
+    position: relative;
+  }
+
+  .highlight {
+    position: relative;
+    z-index: 10;
+    color: #eab308;
+  }
+
+  .highlight-bg {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 0;
+    width: 100%;
+    height: 0.75rem;
+    background-color: rgba(234, 179, 8, 0.2);
+    transform: skewX(-6deg);
+  }
+
+  .description {
+    font-size: 1.25rem;
+    color: #e5e7eb;
+    margin-bottom: 2rem;
+    line-height: 1.75;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: #eab308;
+    color: #1a1f33;
+    border-radius: 9999px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background: #f59e0b;
+    transform: translateY(-2px);
+  }
+
+  .button-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .stats-container {
+    flex-shrink: 0;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-value {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #eab308;
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    color: #d1d5db;
+  }
+
+  .bottom-gradient {
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    right: 0;
+    height: 5rem;
+    background: linear-gradient(to top, #f9fafb, #00000000);
+  }
+</style>

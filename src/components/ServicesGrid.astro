@@ -1,0 +1,478 @@
+---
+// ServicesGrid.astro
+import { Image } from 'astro:assets';
+import services from '../data/services';
+---
+
+<div class="services-grid">
+  <div class="title-section">
+    <h2>Zasto izabrati <span class="highlight">Laufer</span></h2>
+    <p>
+      Mi smo tim iskusnih instruktora posvećenih pružanju najboljeg mogućeg
+      iskustva u vožnji našim polaznicima.
+    </p>
+  </div>
+
+  <div class="services-container">
+    {
+      services.map((service, index) => (
+        <div class={`service-card ${service.color}`} data-index={index + 1}>
+          <div class="card-inner">
+            {/* Front */}
+            <div class="card-front">
+              <div class="card-pattern" />
+              <div class="content">
+                <div class="icon-wrapper">
+                  <Image
+                    src={service.icon || '/placeholder.svg'}
+                    alt={service.title}
+                    width={96}
+                    height={96}
+                  />
+                </div>
+
+                <h3>{service.title}</h3>
+                <p class="service-brief">{service.description}</p>
+                <div class="hover-hint">Hover to learn more</div>
+                <div class="expand-icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            {/* Back */}
+            <div class="card-back">
+              <div class="content">
+                <div class="features">
+                  <h3>{service.title}</h3>
+                  <p class="servicedesc">{service.description}</p>
+                  {service.features.map((feature) => (
+                    <div class="feature">
+                      <span class="check-icon">✓</span>
+                      <span>{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  :root {
+    --blue-indigo-gradient: linear-gradient(to bottom right, #60a5fa, #6366f1);
+    --amber-yellow-gradient: linear-gradient(to bottom right, #f6b73c, #f59e0b);
+    --green-emerald-gradient: linear-gradient(
+      to bottom right,
+      #34d399,
+      #10b981
+    );
+    --rose-red-gradient: linear-gradient(to bottom right, #fb7185, #ef4444);
+    --dark-gradient: linear-gradient(to bottom right, #2c3149, #1a1f33);
+    --yellow-orange-gradient: linear-gradient(
+      to bottom right,
+      #fbbf24,
+      #f97316
+    );
+    --teal-emerald-gradient: linear-gradient(to bottom right, #2dd4bf, #10b981);
+    --purple-indigo-gradient: linear-gradient(
+      to bottom right,
+      #a78bfa,
+      #6366f1
+    );
+
+    --blue-indigo-light: linear-gradient(
+      to bottom right,
+      rgba(96, 165, 250, 0.1),
+      rgba(99, 102, 241, 0.1)
+    );
+    --amber-yellow-light: linear-gradient(
+      to bottom right,
+      rgba(246, 183, 60, 0.1),
+      rgba(245, 158, 11, 0.1)
+    );
+    --green-emerald-light: linear-gradient(
+      to bottom right,
+      rgba(52, 211, 153, 0.1),
+      rgba(16, 185, 129, 0.1)
+    );
+    --rose-red-light: linear-gradient(
+      to bottom right,
+      rgba(251, 113, 133, 0.1),
+      rgba(239, 68, 68, 0.1)
+    );
+    --dark-light: linear-gradient(
+      to bottom right,
+      rgba(44, 49, 73, 0.1),
+      rgba(26, 31, 51, 0.1)
+    );
+    --yellow-orange-light: linear-gradient(
+      to bottom right,
+      rgba(251, 191, 36, 0.1),
+      rgba(249, 115, 22, 0.1)
+    );
+    --teal-emerald-light: linear-gradient(
+      to bottom right,
+      rgba(45, 212, 191, 0.1),
+      rgba(16, 185, 129, 0.1)
+    );
+    --purple-indigo-light: linear-gradient(
+      to bottom right,
+      rgba(167, 139, 250, 0.1),
+      rgba(99, 102, 241, 0.1)
+    );
+  }
+
+  .services-grid {
+    padding: 4rem 1rem;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .title-section {
+    text-align: center;
+    margin-bottom: 6rem;
+  }
+
+  .title-section h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #2c3149;
+    margin-bottom: 1.5rem;
+  }
+
+  .title-section .highlight {
+    color: #f59e0b;
+  }
+
+  .title-section p {
+    color: #666;
+    max-width: 42rem;
+    margin: 0 auto;
+    font-size: 1.125rem;
+  }
+
+  .services-container {
+    max-width: 80rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .service-card {
+    perspective: 1200px;
+    height: 350px;
+  }
+
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+  }
+
+  .service-card:hover .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .card-front,
+  .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 1rem;
+  }
+
+  .card-front {
+    padding: 1.5rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  }
+
+  .card-back {
+    transform: rotateY(180deg);
+    padding: 2rem;
+    color: white;
+  }
+
+  .blue-indigo .card-back {
+    background: var(--blue-indigo-gradient);
+  }
+  .amber-yellow .card-back {
+    background: var(--amber-yellow-gradient);
+  }
+  .green-emerald .card-back {
+    background: var(--green-emerald-gradient);
+  }
+  .rose-red .card-back {
+    background: var(--rose-red-gradient);
+  }
+  .dark .card-back {
+    background: var(--dark-gradient);
+  }
+  .yellow-orange .card-back {
+    background: var(--yellow-orange-gradient);
+  }
+  .teal-emerald .card-back {
+    background: var(--teal-emerald-gradient);
+  }
+  .purple-indigo .card-back {
+    background: var(--purple-indigo-gradient);
+  }
+
+  .card-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.03;
+    border-radius: 1rem;
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .icon-wrapper {
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+
+  .icon-wrapper img {
+    width: 96px;
+    height: 96px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+  }
+
+  .service-index {
+    display: none;
+  }
+
+  .service-brief {
+    display: none;
+  }
+
+  .expand-icon {
+    display: none;
+  }
+
+  h3 {
+    text-align: center;
+    margin: 0.5rem 0;
+    /* color: #2c3149; */
+    font-size: 1.25rem;
+  }
+
+  .hover-hint {
+    color: #999;
+    font-size: 0.875rem;
+    margin-top: 1rem;
+  }
+
+  .features {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .feature {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .check-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+  }
+
+  @media (max-width: 1024px) {
+    .services-container {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 0 1rem;
+    }
+    .features {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 1.5rem;
+    }
+    .service-card {
+      height: auto;
+      perspective: none;
+      background: #fff;
+      border-radius: 0.75rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+    }
+
+    .card-inner {
+      transform-style: flat;
+      transition: none;
+    }
+
+    .service-card:hover .card-inner {
+      transform: none;
+    }
+
+    .card-front {
+      position: relative;
+      padding: 1.25rem;
+      background: transparent !important;
+      box-shadow: none;
+      height: unset;
+    }
+
+    .card-front .content {
+      flex-direction: row;
+      align-items: center;
+      gap: 1.5rem;
+      height: auto;
+    }
+
+    .icon-wrapper {
+      margin: 0;
+      flex-shrink: 0;
+    }
+
+    .icon-wrapper img {
+      width: 48px;
+      height: 48px;
+    }
+
+    .service-index {
+      display: block;
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      font-size: 0.875rem;
+      color: #666;
+      opacity: 0.5;
+    }
+
+    .service-brief {
+      display: block;
+      color: #666;
+      font-size: 0.875rem;
+      margin: 0.25rem 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .service-brief {
+      display: none;
+    }
+    h3 {
+      text-align: left;
+      margin: 0;
+      font-size: 1rem;
+      color: #2c3149;
+    }
+
+    .expand-icon {
+      display: block;
+      margin-left: auto;
+      color: #666;
+      transition: transform 0.3s ease;
+    }
+
+    .service-card.active .expand-icon {
+      transform: rotate(180deg);
+    }
+
+    .card-back {
+      position: relative;
+      height: 0;
+      opacity: 0;
+      transform: none;
+      background: #f8f9fa !important;
+      transition: all 0.3s ease;
+      padding: 0 1.25rem;
+      overflow: hidden;
+    }
+
+    .service-card.active .card-back {
+      height: auto;
+      opacity: 1;
+    }
+
+    .feature {
+      color: #2c3149;
+      font-size: 0.875rem;
+    }
+
+    .check-icon {
+      background: #e9ecef;
+      color: #2c3149;
+    }
+
+    .hover-hint {
+      display: none;
+    }
+
+    .card-pattern {
+      display: none;
+    }
+
+    .title-section {
+      margin-bottom: 4rem;
+    }
+    .servicedesc {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.service-card');
+
+    cards.forEach((card) => {
+      card.addEventListener('click', () => {
+        if (window.innerWidth < 1024) {
+          // Close all other cards
+          cards.forEach((otherCard) => {
+            if (otherCard !== card) {
+              otherCard.classList.remove('active');
+            }
+          });
+          // Toggle the active state of the clicked card
+          card.classList.toggle('active');
+        }
+      });
+    });
+  });
+</script>

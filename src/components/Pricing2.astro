@@ -1,0 +1,955 @@
+---
+import {
+  GraduationCap,
+  Clock3,
+  CarFront,
+  CheckCircle2,
+  ChevronRight,
+  Car,
+  MinusCircle,
+  PlusCircle,
+} from 'lucide-react';
+
+// Base prices for different services
+const BASE_PRICES = {
+  bde: {
+    withCar: 80,
+    withoutCar: 60,
+  },
+  hourlyLesson: {
+    withCar: 50,
+    withoutCar: 35,
+  },
+  rentalCar: {
+    withCar: 45,
+    withoutCar: 0,
+  },
+};
+
+// Calculate price function
+const calculatePrice = (basePrice: number, hours: number) => {
+  return basePrice * hours;
+};
+let hours = 10;
+---
+
+<div class="services-container">
+  <!-- Title Section -->
+  <div class="title-section">
+    <div class="decorative-elements">
+      <div class="gradient-bg"></div>
+      <div class="top-line"></div>
+      <div class="bottom-line"></div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="title-content">
+        <!-- Title with Visual Elements -->
+        <div class="icon-container">
+          <div class="icon icon-yellow">
+            <GraduationCap className="icon-svg" />
+          </div>
+          <div class="icon icon-dark">
+            <Car className="icon-svg" />
+          </div>
+        </div>
+
+        <h1>Naši paketi i <span class="highlight">Usluge</span></h1>
+        <p>
+          Izaberite iz našeg sveobuhvatnog asortimana vozačkih usluga
+          prilagođenih vašim potrebama.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Services Grid -->
+  <div class="services-grid">
+    <div class="grid-container">
+      <!-- Desktop Grid -->
+      <div class="desktop-grid">
+        <!-- Hourly Lesson Card -->
+        <div class="service-card hourly-card">
+          <div class="card-content">
+            <div class="card-header">
+              <div class="icon-box dark">
+                <Clock3 className="icon-svg" />
+              </div>
+              <h3>Teorijska obuka</h3>
+              <p>Ceo iznos možete platiti u više mesecnih rata ili odjednom.</p>
+              <p>Cena po času 400 RSD</p>
+            </div>
+
+            <div class="pricing">
+              <div class="price">RSD 16.000</div>
+              <div class="price-subtitle">40 časova</div>
+            </div>
+
+            <div class="features">
+              <div class="feature">
+                <CheckCircle2 className="check-icon" />
+                <p>Povoljna i transparentna cena</p>
+              </div>
+              <div class="feature">
+                <CheckCircle2 className="check-icon" />
+                <p>Fleksibilno zakazivanje</p>
+              </div>
+              <div class="feature">
+                <CheckCircle2 className="check-icon" />
+                <p>Instrukcije jedan na jedan</p>
+              </div>
+              <div class="feature">
+                <CheckCircle2 className="check-icon" />
+                <p>Prilagodljivi časovi</p>
+              </div>
+              <div class="feature">
+                <CheckCircle2 className="check-icon" />
+                <p>Pun sat posvećene obuke</p>
+              </div>
+            </div>
+
+            <a href="/contact" class="button dark">
+              Rezerviši sada
+              <ChevronRight className="button-icon" />
+            </a>
+          </div>
+        </div>
+
+        <!-- BDE Service Card -->
+        <div class="service-card bde-card">
+          <div class="popular-badge">
+            <svg
+              class="star-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
+              ></path>
+            </svg>
+            Najpopularniji izbor
+          </div>
+
+          <div class="card-content dark">
+            <div class="card-header">
+              <div class="icon-box yellow">
+                <GraduationCap className="icon-svg" />
+              </div>
+              <h3>Praktična obuka</h3>
+              <p>
+                Kompletan program obuke za početnike odobren od strane MTO-a.
+              </p>
+              <p>Cena po času 1500 RSD</p>
+            </div>
+
+            <div class="pricing">
+              <div class="price">RSD 60.000</div>
+              <div class="price-subtitle">40 časova</div>
+            </div>
+
+            <div class="features">
+              <div class="feature">
+                <CheckCircle2 className="check-icon" />
+                <p>40 sati sveobuhvatne obuke</p>
+              </div>
+              <div class="feature">
+                <CheckCircle2 className="check-icon" />
+                <p>10 sati praktične vožnje</p>
+              </div>
+              <div class="feature">
+                <CheckCircle2 className="check-icon" />
+                <p>Sertifikat za popust na osiguranje</p>
+              </div>
+            </div>
+
+            <a href="/contact" class="button yellow">
+              Započni
+              <ChevronRight className="button-icon" />
+            </a>
+          </div>
+        </div>
+
+        <!-- Rental Car Service Card -->
+        <div class="service-card rental-card">
+          <div class="card-content">
+            <div class="card-header">
+              <div class="icon-box dark">
+                <CarFront className="icon-svg" />
+              </div>
+              <h3>Usluga iznajmljivanja vozila</h3>
+              <p>Sigurna i pouzdana vozila za vaš test vožnje.</p>
+            </div>
+
+            <div class="pricing">
+              <div class="price">149,45 USD</div>
+              <div class="price-subtitle">po testu</div>
+              <div class="price-highlight">Uključuje 1 sat zagrevanja</div>
+            </div>
+
+            <div class="features">
+              <div class="feature">
+                <CheckCircle2 className="check-icon" />
+                <p>Dobro održavana i čista vozila</p>
+              </div>
+              <div class="feature">
+                <CheckCircle2 className="check-icon" />
+                <p>Puno osiguranje</p>
+              </div>
+              <div class="feature">
+                <CheckCircle2 className="check-icon" />
+                <p>Sesiја zagrevanja pre testa</p>
+              </div>
+              <div class="feature">
+                <CheckCircle2 className="check-icon" />
+                <p>Preuzimanje sa centra za testiranje</p>
+              </div>
+              <div class="feature">
+                <CheckCircle2 className="check-icon" />
+                <p>Dvostruki kočioni sistem za sigurnost</p>
+              </div>
+            </div>
+
+            <a href="/contact" class="button dark">
+              Rezerviši sada
+              <ChevronRight className="button-icon" />
+            </a>
+          </div>
+        </div>
+
+        <!-- Mobile Cards -->
+        <div class="mobile-grid">
+          <!-- Mobile versions of the same cards -->
+          <!-- Hourly Lesson Card -->
+          <div class="service-card mobile-card">
+            <div class="card-content">
+              <div class="card-header">
+                <div class="icon-box dark">
+                  <Clock3 className="icon-svg" />
+                </div>
+                <h3>Hourly Lessons</h3>
+                <p>
+                  Flexible hourly driving lessons tailored to your schedule.
+                </p>
+              </div>
+
+              <div class="pricing">
+                <div class="price">$50+HST</div>
+                <div class="price-subtitle">per hour</div>
+              </div>
+
+              <div class="features">
+                <div class="feature">
+                  <CheckCircle2 className="check-icon" />
+                  <p>Affordable & Transparent Pricing</p>
+                </div>
+                <div class="feature">
+                  <CheckCircle2 className="check-icon" />
+                  <p>Flexible Scheduling</p>
+                </div>
+                <div class="feature">
+                  <CheckCircle2 className="check-icon" />
+                  <p>One-on-One Instruction</p>
+                </div>
+                <div class="feature">
+                  <CheckCircle2 className="check-icon" />
+                  <p>Customizable Lessons</p>
+                </div>
+                <div class="feature">
+                  <CheckCircle2 className="check-icon" />
+                  <p>Full Hour of Dedicated Training</p>
+                </div>
+              </div>
+
+              <a href="/contact" class="button dark">
+                Book Now
+                <ChevronRight className="button-icon" />
+              </a>
+            </div>
+          </div>
+
+          <!-- BDE Service Card -->
+          <div class="service-card mobile-card">
+            <div class="card-content dark">
+              <div class="card-header">
+                <div class="icon-box yellow">
+                  <GraduationCap className="icon-svg" />
+                </div>
+                <h3>Beginners Driver Education (BDE)</h3>
+                <p>Complete MTO-approved beginner driver education program.</p>
+              </div>
+
+              <div class="toggle-container">
+                <button class="toggle-button with-car-button active">
+                  <Car className="icon-svg" />
+                  With Car
+                </button>
+                <button class="toggle-button without-car-button">
+                  <Car className="icon-svg" />
+                  Without Car
+                </button>
+              </div>
+
+              <div class="hours-selector">
+                <button
+                  class="hours-button decrease-hours"
+                  disabled={hours <= 10}
+                >
+                  <MinusCircle className="icon-svg" />
+                </button>
+                <span class="hours-display">10 hours</span>
+                <button class="hours-button increase-hours">
+                  <PlusCircle className="icon-svg" />
+                </button>
+              </div>
+
+              <div class="pricing">
+                <div class="price bde-price">$800</div>
+                <div class="price-subtitle">Total package</div>
+              </div>
+
+              <div class="features">
+                <div class="feature">
+                  <CheckCircle2 className="check-icon" />
+                  <p>40 hours of comprehensive training</p>
+                </div>
+                <div class="feature">
+                  <CheckCircle2 className="check-icon" />
+                  <p>10 hours in-car instruction</p>
+                </div>
+                <div class="feature">
+                  <CheckCircle2 className="check-icon" />
+                  <p>Insurance discount certificate</p>
+                </div>
+              </div>
+
+              <a href="/contact" class="button yellow">
+                Get Started
+                <ChevronRight className="button-icon" />
+              </a>
+            </div>
+          </div>
+
+          <!-- Rental Car Service Card -->
+          <div class="service-card mobile-card">
+            <div class="card-content">
+              <div class="card-header">
+                <div class="icon-box dark">
+                  <CarFront className="icon-svg" />
+                </div>
+                <h3>Car Rental Service</h3>
+                <p>Safe and reliable vehicles for your road test.</p>
+              </div>
+
+              <div class="pricing">
+                <div class="price">$149.45</div>
+                <div class="price-subtitle">per test</div>
+                <div class="price-highlight">Includes 1-hour warm-up</div>
+              </div>
+
+              <div class="features">
+                <div class="feature">
+                  <CheckCircle2 className="check-icon" />
+                  <p>Well-maintained, clean vehicles</p>
+                </div>
+                <div class="feature">
+                  <CheckCircle2 className="check-icon" />
+                  <p>Full insurance coverage</p>
+                </div>
+                <div class="feature">
+                  <CheckCircle2 className="check-icon" />
+                  <p>Pre-test warm-up session</p>
+                </div>
+                <div class="feature">
+                  <CheckCircle2 className="check-icon" />
+                  <p>Pick-up from test center</p>
+                </div>
+                <div class="feature">
+                  <CheckCircle2 className="check-icon" />
+                  <p>Dual brake system for safety</p>
+                </div>
+              </div>
+
+              <a href="/contact" class="button dark">
+                Reserve Now
+                <ChevronRight className="button-icon" />
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Note: Structure is similar but with modified classes -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Client-side JavaScript for interactivity
+
+    const hoursValue = document.querySelector('.hours-display');
+    const decreaseButton = document.querySelector('.decrease-hours');
+    const increaseButton = document.querySelector('.increase-hours');
+    const withCarButton = document.querySelector('.with-car-button');
+    const withoutCarButton = document.querySelector('.without-car-button');
+
+    let hours = 10;
+    let withCar = true;
+
+    function updatePrice() {
+      const basePrice = withCar ? 80 : 60;
+      const total = basePrice * hours;
+      const bdePriceElement = document.querySelector('.bde-price');
+      if (bdePriceElement) {
+        bdePriceElement.textContent = `$${total}`;
+      }
+    }
+
+    if (decreaseButton && increaseButton) {
+      decreaseButton.addEventListener('click', () => {
+        if (hours > 10) {
+          hours--;
+          if (hoursValue) {
+            hoursValue.textContent = `${hours} hours`;
+          }
+          updatePrice();
+        }
+      });
+
+      increaseButton.addEventListener('click', () => {
+        if (hours < 50) {
+          hours++;
+          if (hoursValue) {
+            hoursValue.textContent = `${hours} hours`;
+          }
+          updatePrice();
+        }
+      });
+    }
+
+    if (withCarButton && withoutCarButton) {
+      withCarButton.addEventListener('click', () => {
+        withCar = true;
+        withCarButton.classList.add('active');
+        withoutCarButton.classList.remove('active');
+        updatePrice();
+      });
+
+      withoutCarButton.addEventListener('click', () => {
+        withCar = false;
+        withoutCarButton.classList.add('active');
+        withCarButton.classList.remove('active');
+        updatePrice();
+      });
+    }
+  </script>
+  <style>
+    /* Base Styles */
+    :root {
+      --color-primary: #2c3149;
+      --color-primary-dark: #1a1f33;
+      --color-yellow: #eab308;
+      --color-yellow-dark: #ca8a04;
+      --color-gray: #6b7280;
+      --color-light-gray: #f3f4f6;
+      --border-radius: 1.5rem;
+      --transition: all 0.3s ease;
+    }
+    * {
+      transition: all 0.3s ease;
+    }
+
+    .services-container {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Title Section */
+    .title-section {
+      position: relative;
+      padding-bottom: 3rem;
+      overflow: hidden;
+    }
+
+    .decorative-elements {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+    }
+
+    .gradient-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #fefce8 0%, #f9fafb 100%);
+    }
+
+    .top-line,
+    .bottom-line {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        var(--color-yellow) 50%,
+        transparent
+      );
+      opacity: 0.3;
+    }
+
+    .top-line {
+      top: 0;
+    }
+
+    .bottom-line {
+      bottom: 0;
+    }
+
+    .content-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .title-content {
+      text-align: center;
+      max-width: 48rem;
+      margin: 0 auto;
+    }
+
+    .icon-container {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .yellow {
+      background-color: var(--color-yellow);
+      text-align: left;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.75rem;
+      width: 3rem;
+      height: 3rem;
+    }
+    .icon {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .icon-yellow {
+      background: linear-gradient(
+        135deg,
+        var(--color-yellow) 0%,
+        var(--color-yellow-dark) 100%
+      );
+      transform: rotate(-6deg);
+    }
+
+    .icon-dark {
+      background: linear-gradient(
+        135deg,
+        var(--color-primary) 0%,
+        var(--color-primary-dark) 100%
+      );
+      transform: rotate(6deg);
+      margin-left: -1rem;
+    }
+
+    .icon-svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      color: white;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 1rem;
+    }
+
+    .highlight {
+      color: var(--color-yellow);
+    }
+
+    /* Services Grid */
+    .services-grid {
+      padding: 3rem 0;
+      background-color: white;
+    }
+
+    .grid-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .desktop-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      .desktop-grid {
+        display: grid;
+      }
+
+      .mobile-grid {
+        display: none;
+      }
+    }
+
+    /* Service Cards */
+    .service-card {
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+      height: 100%;
+    }
+
+    .service-card:hover {
+      transform: translateY(-0.75rem) scale(1.02);
+      transition: transform 0.3s ease-in-out;
+    }
+    .service-card:hover .popular-badge {
+      transform: translateY(-0.65rem) scale(1.02);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .card-content {
+      padding: 1rem;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-radius: var(--border-radius);
+      color: rgb(44 49 73);
+      cursor: pointer;
+    }
+    .card-content:hover {
+      transform: scale(1.02);
+    }
+    .hourly-card .card-content,
+    .rental-card .card-content {
+      background: white;
+      border: 2px solid var(--color-primary);
+    }
+
+    .bde-card .card-content {
+      background: linear-gradient(
+        135deg,
+        var(--color-primary) 0%,
+        var(--color-primary-dark) 100%
+      );
+      color: white;
+    }
+    .bde-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Card Elements */
+    .card-header {
+      margin-bottom: 1.5rem;
+    }
+    .icon-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 50px;
+      width: 50px;
+      padding: 10px;
+      background-color: var(--color-primary-dark);
+      border-radius: 0.75rem;
+    }
+    .yellow {
+      background-color: var(--color-yellow);
+    }
+    .pricing {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .price {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .price-subtitle {
+      font-size: 0.875rem;
+      color: var(--color-gray);
+    }
+
+    .price-highlight {
+      color: var(--color-yellow);
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin-top: 0.25rem;
+    }
+
+    .features {
+      margin-bottom: 1.5rem;
+    }
+
+    .feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .check-icon {
+      width: 1.25rem;
+      height: 1.25rem;
+      color: var(--color-yellow);
+      flex-shrink: 0;
+    }
+
+    /* Buttons */
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      font-weight: 500;
+      transition: var(--transition);
+      text-decoration: none;
+      margin-top: auto;
+    }
+
+    .button.dark {
+      background-color: var(--color-primary);
+      color: white;
+    }
+
+    .button.yellow {
+      background-color: var(--color-yellow);
+      color: white;
+    }
+
+    .button:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    .button-icon {
+      width: 1rem;
+      height: 1rem;
+      transition: transform 0.2s ease;
+    }
+
+    .button:hover .button-icon {
+      transform: translateX(4px);
+    }
+
+    /* Popular Badge */
+    .popular-badge {
+      background: linear-gradient(
+        90deg,
+        var(--color-yellow) 0%,
+        var(--color-yellow-dark) 100%
+      );
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: -1rem;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .star-icon {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    /* Mobile Styles */
+    /* Mobile Styles */
+    @media (max-width: 767px) {
+      .mobile-grid {
+        display: flex;
+        overflow-x: auto;
+        gap: 1rem;
+        padding: 1rem;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+
+      .mobile-grid::-webkit-scrollbar {
+        display: none;
+      }
+
+      .mobile-grid .service-card {
+        flex: 0 0 85%;
+        max-width: 320px;
+        scroll-snap-align: center;
+      }
+
+      .mobile-grid .card-content {
+        padding: 1.25rem;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .icon {
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+
+      .icon-svg {
+        width: 1.25rem;
+        height: 1.25rem;
+      }
+    }
+
+    /* Toggle Switch Styles */
+    .toggle-container {
+      display: flex;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 0.75rem;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .toggle-button {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      background: none;
+      color: rgba(255, 255, 255, 0.7);
+      transition: var(--transition);
+    }
+
+    .toggle-button.active {
+      background-color: var(--color-yellow);
+      color: white;
+    }
+
+    /* Hours Selector Styles */
+    .hours-selector {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 0.5rem;
+      border-radius: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .hours-button {
+      padding: 0.5rem;
+      color: rgba(255, 255, 255, 0.7);
+      cursor: pointer;
+      border: none;
+      background: none;
+      transition: var(--transition);
+    }
+
+    .hours-button:disabled {
+      color: rgba(255, 255, 255, 0.3);
+      cursor: not-allowed;
+    }
+
+    .hours-button:not(:disabled):hover {
+      color: white;
+    }
+
+    .hours-display {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: white;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .service-card {
+      animation: fadeIn 0.5s ease-out forwards;
+    }
+
+    .service-card:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    .service-card:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .service-card:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    /* Accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      .service-card,
+      .button-icon,
+      .icon-box,
+      .check-icon {
+        transition: none;
+      }
+    }
+
+    /* Focus States */
+    .button:focus-visible,
+    .toggle-button:focus-visible {
+      outline: 2px solid var(--color-yellow);
+      outline-offset: 2px;
+    }
+
+    /* Print Styles */
+    @media print {
+      .services-container {
+        background: none;
+      }
+
+      .service-card {
+        break-inside: avoid;
+        border: 1px solid #000;
+      }
+
+      .button {
+        display: none;
+      }
+    }
+  </style>
+</div>

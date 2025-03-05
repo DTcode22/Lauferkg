@@ -1,0 +1,193 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<div class="component-container">
+  <div class="top-section">
+    <div class="shadowbox1"></div>
+    <div class="socials-container">
+      <div class="socials">
+        <div class="icon-wrapper-tweak">
+          <Icon name="line-md--phone-call" height="20px" width="20px" />
+        </div>
+        <a href="#">+387 111 111</a>
+      </div>
+      <div class="socials">
+        <div class="icon-wrapper-tweak">
+          <Icon name="line-md--email-check" height="20px" width="20px" />
+        </div>
+        <a href="#">testmail@testmail.com</a>
+      </div>
+      <div class="icons">
+        <a class="icon-wrapper">
+          <Icon name="line-md--facebook" height="20px" width="20px" />
+        </a>
+        <a class="icon-wrapper">
+          <Icon name="line-md--instagram" height="20px" width="20px" />
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-section">
+    <div class="shadowbox2"></div>
+    <div class="navlinks">
+      <a class="home" href="/">Home</a>
+      <a class="about" href="/about">About</a>
+      <a class="services" href="/services">Services</a>
+      <a class="contact" href="/contact">Contact</a>
+    </div>
+    <div class="logo"></div>
+    <div class="mobile">
+      <div class="logo"></div>
+    </div>
+  </div>
+
+  <style>
+    :root {
+      --color-primary: #2c3149;
+      --color-primary-dark: #1a1f33;
+      --color-yellow: #eab308;
+      --color-yellow-dark: #ca8a04;
+      --color-gray: #6b7280;
+      --color-light-gray: #f3f4f6;
+      --border-radius: 1.5rem;
+      --transition: all 0.3s ease;
+    }
+    * {
+      font-family: 'Poppins', sans-serif;
+    }
+    .component-container {
+      display: flex;
+      flex-wrap: wrap;
+      height: 130px;
+      width: 100%;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .socials-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50%;
+      gap: 12px;
+      /* background-color: rgb(243, 237, 237); */
+    }
+
+    .shadowbox1 {
+      height: 100%;
+      width: 34%;
+      /* background-color: rgb(243, 237, 237); */
+      background-color: rgb(209 37 37);
+    }
+    .top-section {
+      display: flex;
+      height: 55%;
+      width: 100%;
+      justify-content: space-around;
+      align-items: center;
+      /* background-color: rgb(243, 237, 237); */
+      background-color: #ff3333;
+      background-color: rgb(209 37 37);
+    }
+    .bottom-section {
+      /* background-color: rgb(0, 0, 0); */
+      background-color: var(--color-primary-dark);
+      background-color: #292f36;
+      position: relative;
+      display: flex;
+      height: 45%;
+      width: 100%;
+      justify-content: space-between;
+      color: white;
+      align-items: center;
+    }
+    .navlinks {
+      display: flex;
+      cursor: pointer;
+      align-items: center;
+      justify-content: flex-start;
+      height: 50%;
+      width: 400px;
+      gap: 1.2rem;
+      margin-right: 30px;
+    }
+    .shadowbox2 {
+      height: 100%;
+      width: 40%;
+      /* background-color: rgb(243, 237, 237); */
+    }
+    .logo {
+      background-image: url('/logo-trans.png');
+      background-size: cover;
+      background-size: 108%;
+      background-position: -4px 26%;
+      position: absolute;
+      height: 120px;
+      width: 130px;
+      border-radius: 50%;
+      border: 1.2px solid rgb(40, 40, 40);
+      background-color: var(--color-light-gray);
+      padding: 20px;
+      font-size: 1.5rem;
+      top: -68px;
+      left: 14%;
+      z-index: 10000;
+      rotate: -10deg;
+    }
+    .icons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      width: 40px;
+      color: #ececec;
+      gap: 12px;
+    }
+    .icon-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 30px;
+      width: 30px;
+    }
+    .icon-wrapper-tweak {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 20px;
+      color: #ececec;
+    }
+    .socials {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .about,
+    .home {
+      height: 30px;
+      width: 50px;
+    }
+    .services,
+    .contact {
+      height: 30px;
+      width: 66px;
+    }
+    a {
+      cursor: pointer;
+      text-decoration: none;
+      color: black;
+      color: #ececec;
+    }
+    .mobile {
+      display: none;
+    }
+    @media (max-width: 768px) {
+      .component-container {
+        display: none;
+      }
+      .mobile {
+        display: block;
+      }
+    }
+  </style>
+</div>

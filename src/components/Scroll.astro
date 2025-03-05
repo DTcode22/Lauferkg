@@ -1,0 +1,464 @@
+---
+import steps from '../data/steps.js';
+---
+
+<div class="roadmap">
+  <div class="roadmap-container">
+    <div class="title-section">
+      <h2>Vas put do <span class="highlight">Uspeha</span></h2>
+      <p>Koraci do vozacke dozvole</p>
+    </div>
+
+    <div class="steps-section">
+      <div class="main-connector-line"></div>
+      <div class="car-indicator">
+        <img src="/car.png" alt="Car indicator" />
+      </div>
+
+      <div class="steps-container">
+        {
+          steps.map((step, index) => (
+            <div class="roadmap-step">
+              <div class="step-group">
+                <div class="step-content">
+                  <div
+                    class="connector-dot"
+                    style={`background-color: ${step.color}`}
+                  />
+
+                  <div
+                    class="icon-container"
+                    style={`background: linear-gradient(135deg, ${step.color}, ${step.color}dd)`}
+                  />
+
+                  <div class="content-card">
+                    <div class="pattern-overlay" />
+
+                    <div
+                      class="step-number"
+                      style={`background: linear-gradient(135deg, ${step.color}, ${step.color}dd)`}
+                    >
+                      <span>{index + 1}</span>
+                    </div>
+
+                    <div class="card-content">
+                      <div class="card-header">
+                        <h3>{step.title}</h3>
+                        <div
+                          class="phase-badge"
+                          style={`background-color: ${step.color}1a; color: ${step.color}`}
+                        >
+                          Korak {index + 1}
+                        </div>
+                      </div>
+
+                      <p class="description">{step.description}</p>
+
+                      <div class="feature-list">
+                        {step.features.map((feature) => (
+                          <div class="feature-item">
+                            <div
+                              class="check-circle"
+                              style={`background-color: ${step.color}`}
+                            >
+                              <span>✓</span>
+                            </div>
+                            <span>{feature}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const setupAnimations = () => {
+    // Title animation
+    gsap.from('.title-section', {
+      opacity: 0,
+      y: 30,
+      duration: 0.8,
+      scrollTrigger: {
+        trigger: '.title-section',
+        start: 'top 80%',
+        end: 'top 60%',
+        toggleActions: 'play none none reverse',
+      },
+    });
+
+    // Main timeline
+    const mainTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.steps-container',
+        start: 'top 70%',
+        end: 'bottom 70%',
+        scrub: 0.5,
+        toggleActions: 'play none none reverse',
+      },
+    });
+
+    // Set initial states
+    gsap.set('.content-card', { opacity: 0, x: -30 });
+    gsap.set('.connector-dot', { scale: 0, opacity: 0 });
+    gsap.set('.icon-container', { scale: 0, opacity: 0 });
+    gsap.set('.car-indicator', { opacity: 0, scale: 0 });
+
+    const totalSteps = document.querySelectorAll('.roadmap-step').length;
+    const segmentLength = 1 / totalSteps;
+
+    // Car indicator animation
+    mainTl.fromTo(
+      '.car-indicator',
+      { opacity: 0, scale: 0, top: '40px' },
+      { opacity: 1, scale: 1, duration: 0.3, ease: 'back.out(1.7)' }
+    );
+
+    // Animate steps
+    document.querySelectorAll('.roadmap-step').forEach((_, index) => {
+      const startProgress = index * segmentLength;
+      const nextPosition = `${((index + 1) / totalSteps) * 100}%`;
+
+      if (index === 0) {
+        mainTl
+          .to('.main-connector-line', {
+            height: `${(1 / totalSteps) * 100}%`,
+            duration: segmentLength,
+            ease: 'none',
+          })
+          .to(
+            '.car-indicator',
+            {
+              top: nextPosition,
+              duration: segmentLength,
+              ease: 'none',
+            },
+            '<'
+          );
+      } else {
+        mainTl
+          .to('.main-connector-line', {
+            height: nextPosition,
+            duration: segmentLength,
+            ease: 'none',
+          })
+          .to(
+            '.car-indicator',
+            {
+              top: nextPosition,
+              duration: segmentLength,
+              ease: 'none',
+            },
+            '<'
+          );
+      }
+
+      const stepTl = gsap.timeline();
+
+      stepTl
+        .to(`.roadmap-step:nth-child(${index + 1}) .connector-dot`, {
+          scale: 1,
+          opacity: 1,
+          duration: 0.05,
+          ease: 'back.out(2)',
+        })
+        .to(
+          `.roadmap-step:nth-child(${index + 1}) .icon-container`,
+          {
+            scale: 1,
+            opacity: 1,
+            duration: 0.1,
+            ease: 'back.out(1.7)',
+          },
+          '>-0.02'
+        )
+        .to(
+          `.roadmap-step:nth-child(${index + 1}) .content-card`,
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.15,
+            ease: 'power2.out',
+          },
+          '>-0.05'
+        );
+
+      mainTl.add(stepTl, startProgress);
+    });
+  };
+
+  // Run animations when the component mounts
+  setupAnimations();
+</script>
+
+<style>
+  @font-face {
+    font-family: 'Poppins';
+    src: url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+  }
+  .roadmap {
+    position: relative;
+  }
+
+  .roadmap::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, #f9fafb, #ffffff);
+  }
+
+  .roadmap-container {
+    position: relative;
+    padding: 4rem 1.5rem;
+    max-width: 80rem;
+    margin: 0 auto;
+  }
+
+  .title-section {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+
+  .title-section h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #2c3149;
+    margin-bottom: 1.5rem;
+  }
+
+  .title-section .highlight {
+    color: #eab308;
+  }
+
+  .title-section p {
+    color: #4b5563;
+    font-size: 1.125rem;
+    max-width: 36rem;
+    margin: 0 auto;
+  }
+
+  .steps-section {
+    position: relative;
+    max-width: 64rem;
+    margin: 0 auto;
+  }
+
+  .main-connector-line {
+    position: absolute;
+    left: 39px;
+    top: 20px;
+    height: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, #2c3149, #eab308, #ef4444);
+  }
+
+  .car-indicator {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    transform: translate(-50%, -50%);
+    left: 40.5px;
+    z-index: 30;
+  }
+
+  .car-indicator img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .steps-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .roadmap-step {
+    position: relative;
+  }
+
+  .step-group {
+    position: relative;
+  }
+
+  .step-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .connector-dot {
+    position: absolute;
+    left: 34.5px;
+    top: 38px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    z-index: 20;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 4px solid white;
+  }
+
+  .icon-container {
+    flex-shrink: 0;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+    transition: transform 0.5s;
+  }
+
+  .step-group:hover .icon-container {
+    transform: scale(1.1) rotate(5deg);
+  }
+
+  .content-card {
+    flex-grow: 1;
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(243, 244, 246, 0.5);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s;
+  }
+
+  .step-group:hover .content-card {
+    transform: translateX(0.5rem);
+    box-shadow: 0 8px 30px -4px rgba(0, 0, 0, 0.2);
+  }
+
+  .pattern-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+    background-size: 16px 16px;
+    opacity: 0.15;
+  }
+
+  .step-number {
+    position: absolute;
+    top: -0.5rem;
+    left: -0.75rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-12deg);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .step-number span {
+    color: white;
+    font-weight: 700;
+    font-size: 1.125rem;
+  }
+
+  .card-content {
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+
+  .card-header h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2c3149;
+  }
+
+  .phase-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .description {
+    font-size: 1rem;
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: #4b5563;
+  }
+
+  .check-circle {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .check-circle span {
+    color: white;
+    font-size: 0.625rem;
+  }
+
+  @media (max-width: 640px) {
+    .step-content {
+      gap: 1rem;
+    }
+
+    .icon-container {
+      width: 4rem;
+      height: 4rem;
+    }
+
+    .content-card {
+      padding: 1rem;
+    }
+
+    .card-header h3 {
+      font-size: 1.125rem;
+    }
+
+    .phase-badge {
+      display: none;
+    }
+
+    .description {
+      font-size: 0.875rem;
+    }
+  }
+</style>

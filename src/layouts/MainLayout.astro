@@ -1,0 +1,63 @@
+---
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import Header2 from '../components/Header2.astro';
+import MainHead from './MainHead.astro';
+
+//Props
+interface Props {
+  title?: string;
+  description?: string;
+  mainLink?: string;
+}
+//Props
+const { title, description, mainLink } = Astro.props as Props;
+---
+
+<html lang="sr">
+  <MainHead title={title} description={description} mainLink={mainLink} />
+  <body>
+    <div class="fullvw">
+      <div class="app-container">
+        <!-- <Header /> -->
+        <Header2 />
+        <slot>Default text</slot>
+        <Footer />
+      </div>
+    </div>
+    <style is:global>
+      /* CSS RESET */
+      *,
+      *::after,
+      *::before {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        cursor: default;
+      }
+      .fullvw {
+        display: flex;
+        justify-content: center;
+        width: 100vw;
+        height: 100vh;
+      }
+      .app-container {
+        width: 100%;
+        /* max-width: 1440px; */
+        /* border-right: 1.8px solid rgb(40, 46, 96);
+        border-left: 1.8px solid rgb(40, 46, 96); */
+      }
+      @media only screen and (max-width: 768px) {
+        .app-container {
+          border: none;
+        }
+      }
+    </style>
+  </body>
+</html>

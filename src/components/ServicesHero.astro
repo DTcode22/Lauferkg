@@ -1,0 +1,184 @@
+---
+import { BookOpen } from 'lucide-react';
+---
+
+<section class="hero">
+  <div class="hero-background">
+    <div class="texture-overlay"></div>
+    <div class="gradient-overlay"></div>
+  </div>
+
+  <div class="container">
+    <div class="content">
+      <div class="badge">
+        <BookOpen name="badge-icon" color="#EAB308" />
+        <span>G1 Test Priprema</span>
+      </div>
+
+      <h1>
+        Usavršite svoj G1 <span class="highlight">Pisani test</span>
+      </h1>
+
+      <p>Vežbajte uz našu sveobuhvatnu bazu pitanja i materijale za učenje</p>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-value">500+</div>
+          <div class="stat-label">Pitanja za učenje</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">98%</div>
+          <div class="stat-label">Prolaznost</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">10</div>
+          <div class="stat-label">Tema rada</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">24/7</div>
+          <div class="stat-label">Pristup materijalu</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    padding: 2rem 0 5rem;
+    background-color: #2c3149;
+    overflow: hidden;
+  }
+
+  .hero-background {
+    position: absolute;
+    inset: 0;
+  }
+
+  .texture-overlay {
+    position: absolute;
+    inset: 0;
+    /* background-image: url('/patterns/texture-dots.png'); */
+    opacity: 0.03;
+  }
+
+  .gradient-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom right, #2c3149, #2c3149, #1a1f33);
+  }
+
+  .container {
+    position: relative;
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .content {
+    text-align: center;
+    max-width: 48rem;
+    margin: 0 auto;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 9999px;
+  }
+
+  .badge-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #eab308;
+  }
+
+  .badge span {
+    color: white;
+    font-weight: 500;
+  }
+
+  h1 {
+    font-size: clamp(2.25rem, 5vw, 2.75rem);
+    font-weight: 700;
+    color: white;
+  }
+
+  .highlight {
+    color: #eab308;
+  }
+
+  p {
+    font-size: clamp(1.125rem, 2vw, 1.25rem);
+    color: #d1d5db;
+    margin-bottom: 2rem;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    max-width: 48rem;
+    margin: 3rem auto 0;
+  }
+
+  @media (min-width: 640px) {
+    .stats-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .stat-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    border-radius: 0.75rem;
+    padding: 1rem;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #eab308;
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    color: #d1d5db;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .badge,
+  h1,
+  p,
+  .stats-grid {
+    animation: fadeInUp 0.5s ease-out forwards;
+  }
+
+  h1 {
+    animation-delay: 0.1s;
+  }
+
+  p {
+    animation-delay: 0.2s;
+  }
+
+  .stats-grid {
+    animation-delay: 0.3s;
+  }
+</style>

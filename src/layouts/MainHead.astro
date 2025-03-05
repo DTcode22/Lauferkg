@@ -1,0 +1,26 @@
+---
+const {
+  title = 'Laufer - Auto Skola',
+  description = 'Laufer - Auto Skola',
+  mainLink,
+} = Astro.props;
+---
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="generator" content={Astro.generator} />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={mainLink} />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+  ></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  />
+</head>

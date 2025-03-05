@@ -1,0 +1,14 @@
+---
+import Info from '../components/Info.astro';
+import Pricing from '../components/Pricing.astro';
+import ServicesHero from '../components/ServicesHero.astro';
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout title="Autoskola" description="lorem" mainLink="/services">
+  <div class="gradient-overlay">
+    <ServicesHero />
+    <Pricing />
+    <Info />
+  </div>
+</MainLayout>
