@@ -4,7 +4,6 @@ const services = [
     description:
       'Sertifikovano od strane Ministarstva saobraćaja, garantujući obuku vozača najvišeg kvaliteta.',
     icon: '/icons/1.png',
-    color: 'blue-indigo',
     features: ['MTO Sertifikat', 'Profesionalna Obuka', 'Garancija Kvaliteta'],
   },
   {
@@ -12,7 +11,6 @@ const services = [
     description:
       'Samo kod Laufer! Naš ažurirani nastavni plan se fokusira na tačno ono što ispitivači traže.',
     icon: '/icons/2.png',
-    color: 'amber-yellow',
     features: [
       'Personalizovano Učenje',
       'Ažurirani Sadržaj',
@@ -24,7 +22,6 @@ const services = [
     description:
       'Učite od visoko obučenih profesionalaca koji prolaze stroge provere biografije.',
     icon: '/icons/3.png',
-    color: 'green-emerald',
     features: [
       'Stručni Instruktori',
       'Proverena Biografija',
@@ -36,7 +33,6 @@ const services = [
     description:
       'Bez skrivenih troškova—jasne i direktne cene za potpuni mir uma.',
     icon: '/icons/4.png',
-    color: 'rose-red',
     features: ['Jasne Cene', 'Bez Skrivenih Troškova', 'Fleksibilno Plaćanje'],
   },
   {
@@ -44,7 +40,6 @@ const services = [
     description:
       'Savladajte napredne tehnike za sigurnu i pouzdanu vožnju na putu.',
     icon: '/icons/5.png',
-    color: 'dark',
     features: [
       'Napredne Tehnike',
       'Prioritet je sigurnost',
@@ -56,7 +51,6 @@ const services = [
     description:
       'Dokazane metode koje će vam pomoći da položite vozački ispit iz prvog pokušaja.',
     icon: '/icons/6.png',
-    color: 'yellow-orange',
     features: ['Visoka Stopa Uspeha', 'Priprema za Ispit', 'Stručno Vođstvo'],
   },
   {
@@ -64,7 +58,6 @@ const services = [
     description:
       'Finansiranje bez kamate i pristupačni planovi plaćanja koji odgovaraju vašem budžetu.',
     icon: '/icons/7.png',
-    color: 'teal-emerald',
     features: ['Lako Plaćanje', '0% Kamata', 'Fleksibilni Planovi'],
   },
   {
@@ -72,7 +65,6 @@ const services = [
     description:
       'Vaše zadovoljstvo je zagarantovano—ili vraćamo novac, bez postavljanja pitanja.',
     icon: '/icons/8.png',
-    color: 'purple-indigo',
     features: [
       '100% Garancija',
       'Bez Postavljanja Pitanja',

@@ -16,7 +16,7 @@ import services from '../data/services';
   <div class="services-container">
     {
       services.map((service, index) => (
-        <div class={`service-card ${service.color}`} data-index={index + 1}>
+        <div class="service-card" data-index={index + 1}>
           <div class="card-inner">
             {/* Front */}
             <div class="card-front">
@@ -211,33 +211,12 @@ import services from '../data/services';
     transform: rotateY(180deg);
     padding: 2rem;
     color: white;
+    background: linear-gradient(
+      to bottom right,
+      #2c3149,
+      #1a1f33
+    ); /* Single color scheme for all cards */
   }
-
-  .blue-indigo .card-back {
-    background: var(--blue-indigo-gradient);
-  }
-  .amber-yellow .card-back {
-    background: var(--amber-yellow-gradient);
-  }
-  .green-emerald .card-back {
-    background: var(--green-emerald-gradient);
-  }
-  .rose-red .card-back {
-    background: var(--rose-red-gradient);
-  }
-  .dark .card-back {
-    background: var(--dark-gradient);
-  }
-  .yellow-orange .card-back {
-    background: var(--yellow-orange-gradient);
-  }
-  .teal-emerald .card-back {
-    background: var(--teal-emerald-gradient);
-  }
-  .purple-indigo .card-back {
-    background: var(--purple-indigo-gradient);
-  }
-
   .card-pattern {
     position: absolute;
     inset: 0;
